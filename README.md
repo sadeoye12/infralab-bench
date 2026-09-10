@@ -6,6 +6,29 @@ InfraLab-Bench is a planned suite of containerised terminal tasks in which codin
 
 > **Project status:** design and initial implementation. The first milestone will prove the format with two complete tasks before the benchmark expands.
 
+## Development
+
+The repository currently contains the benchmark design, documentation, Python package
+foundation, and test scaffolding. Benchmark tasks, runners, validators, and reporting
+features will be added incrementally as the task format is proven.
+
+Set up a local development environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+```
+
+Run the current checks:
+
+```bash
+ruff check .
+pytest
+python -m compileall -q src tests
+```
+
 ## Why this project exists
 
 Existing benchmarks have made repository-level software repair and general terminal work measurable. InfraLab-Bench focuses on a narrower gap: whether an agent can investigate and repair realistic failures across AI applications, containers, CI/CD, infrastructure as code, ML pipelines, and observability.
@@ -89,7 +112,7 @@ The main reported measures will be pass rate, category pass rate, median complet
 
 ## Planned repository structure
 
-Only the project definition and build guide are committed at this stage. The implementation will grow into the following structure as each component becomes real:
+The implementation will grow into the following structure as each component becomes real:
 
 ```text
 infralab-bench/
