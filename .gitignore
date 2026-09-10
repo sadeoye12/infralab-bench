@@ -1,0 +1,51 @@
+# Imported task staging and local scratch data
+.tmp/
+*.tmp
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Native build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.o
+*.obj
+*.a
+*.lib
+*.out
+*.test
+bin/
+build/
+target/
+
+# Coverage and profiling
+coverage/
+coverage.*
+*.coverprofile
+profile.cov
+
+# Go workspace files
+go.work
+go.work.sum
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
