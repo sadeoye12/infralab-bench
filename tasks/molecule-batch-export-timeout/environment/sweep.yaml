@@ -1,0 +1,6 @@
+version: "v1.0"
+search_params:
+  radius: 2
+  threshold: 0.7
+export:
+  enabled: false
