@@ -1,0 +1,66 @@
+version = "1.0"
+
+[task]
+id = "molecule-batch-export-timeout"
+name = "Molecule Batch Export Timeout"
+category = "application"
+subcategory = "bioinformatics"
+capability_labels = [
+  "pipeline-debugging",
+  "performance-optimization",
+  "postgresql",
+  "artifact-generation",
+]
+reward_type = "binary"
+deterministic_seed = 1001
+description = "Repair a timeout-sensitive molecule sweep pipeline so it emits a complete batch-mapping CSV artifact."
+success_contract = [
+  "The pipeline entrypoint exits successfully within the orchestrator timeout.",
+  "The repaired run writes /app/results.csv.",
+  "The CSV header is exactly mol_id,batch_id.",
+  "The CSV contains all 300 matched molecules.",
+  "Batch IDs are sourced from the chemistry database, including archived batches.",
+  "The repair does not hardcode the expected output rows.",
+]
+
+[metadata]
+difficulty = "hard"
+harness_tier = 3
+expert_time_estimate_min = 20.0
+junior_time_estimate_min = 60.0
+behavioral_target = "B3"
+behavioral_mechanism = "A familiar row-by-row or stale-cache repair path exceeds the strict runtime budget; the successful repair must trace config/cache drift and produce the DB-backed artifact efficiently."
+tags = [
+  "python",
+  "postgresql",
+  "hdf5",
+  "bash",
+  "performance-optimization",
+]
+
+[environment]
+dockerfile = "environment/Dockerfile"
+image = "infralab-bench/molecule-batch-export-timeout-env:1.0"
+build_timeout_sec = 600.0
+runtime_timeout_sec = 3.5
+cpus = 1
+memory_mb = 2048
+storage_mb = 10240
+gpus = 0
+network_policy = "disabled"
+allow_internet = false
+supported_platforms = ["linux/amd64"]
+mcp_servers = []
+
+[verifier]
+command = "tests/test.sh"
+image = "infralab-bench/molecule-batch-export-timeout-verifier:1.0"
+timeout_sec = 300.0
+expected_reward = 1
+
+[agent]
+timeout_sec = 3000.0
+
+[verifier.env]
+
+[solution.env]
