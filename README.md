@@ -156,4 +156,4 @@ InfraLab-Bench is a pilot benchmark, not a claim of comprehensive model capabili
 
 ## Author
 
-Designed and maintained by [Babasola Adeoye](https://github.com/sadeoye12) as a public demonstration of benchmark design, coding-agent evaluation, MLOps, reproducible experimentation, and failure analysis.
+Designed and maintained by [Samuel Adeoye](https://github.com/sadeoye12) as a public demonstration of benchmark design, coding-agent evaluation, MLOps, reproducible experimentation, and failure analysis.
